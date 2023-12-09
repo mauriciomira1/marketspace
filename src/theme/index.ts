@@ -1,4 +1,5 @@
 import { extendTheme } from "native-base";
+
 export const THEME = extendTheme({
   colors: {
     blue: {
@@ -21,6 +22,7 @@ export const THEME = extendTheme({
   fonts: {
     heading: "Karla_700Bold",
     body: "Karla_400Regular",
+    light: "Karla_500Medium",
   },
   fontSizes: {
     xs: 12,
