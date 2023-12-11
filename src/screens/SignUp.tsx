@@ -6,8 +6,8 @@ import { VStack, Text, ScrollView } from "native-base";
 
 const SignUp = () => {
   return (
-    <ScrollView>
-      <VStack flex={1} p={8} bgColor="gray.600" alignItems="center">
+    <ScrollView bgColor="gray.600">
+      <VStack flex={1} p={8} alignItems="center">
         <VStack alignItems="center" pb={4}>
           <Logotipo width={72} />
           <Text fontFamily="heading" fontSize="xl">
@@ -18,7 +18,7 @@ const SignUp = () => {
             seus produtos
           </Text>
         </VStack>
-        <UserPhoto showEditIcon iconSize={20} />
+        <UserPhoto showEditIcon />
         <Input placeholder="Nome" />
         <Input placeholder="E-mail" />
         <Input placeholder="Telefone" />
@@ -30,6 +30,7 @@ const SignUp = () => {
           titleColor="white"
           bgOnPress="gray.200"
           mt={4}
+          w="full"
         />
         <Text pt={4}>Já tem uma conta?</Text>
         <Button
@@ -37,6 +38,7 @@ const SignUp = () => {
           bgColor="gray.500"
           titleColor="gray.200"
           bgOnPress="gray.400"
+          w="full"
         />
       </VStack>
     </ScrollView>

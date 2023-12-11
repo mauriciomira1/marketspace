@@ -12,6 +12,7 @@ import Loading from "@components/Loading";
 import Home from "@screens/Home";
 import SignUp from "@screens/SignUp";
 import AdNew from "@screens/AdNew";
+import Catalog from "@screens/Catalog";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,7 +28,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <AdNew /> : <Loading />}
+      {fontsLoaded ? <Catalog /> : <Loading />}
     </NativeBaseProvider>
   );
 }

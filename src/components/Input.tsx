@@ -8,7 +8,7 @@ const Input = ({ ...rest }: Props) => {
       px={3}
       py={2.5}
       backgroundColor="white"
-      my={2}
+      my={1}
       w="full"
       rounded={8}
       borderWidth={0}

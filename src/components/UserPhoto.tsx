@@ -1,42 +1,44 @@
-import { Image, IImageProps, Box, IBoxProps } from "native-base";
-import { Feather, AntDesign } from "@expo/vector-icons";
+import { Box, IImageProps, Image } from "native-base";
+import { PencilSimpleLine } from "phosphor-react-native";
+import Tenis from "@assets/tenis-vermelho.jpg";
+import DefaultAvatar from "@assets/user-avatar.png";
 
-type Props = IBoxProps & {
+type Props = IImageProps & {
   showEditIcon?: boolean;
-  iconSize: number;
+  UserAvatar?: string;
 };
 
-const UserPhoto = ({ showEditIcon, iconSize, ...rest }: Props) => {
+const UserPhoto = ({ showEditIcon, UserAvatar, ...rest }: Props) => {
   return (
     <Box alignItems="center" pb={6}>
-      <Box
+      <Image
+        source={UserAvatar ? UserAvatar : DefaultAvatar}
+        defaultSource={UserAvatar ? UserAvatar : DefaultAvatar}
+        alt="Foto do usuário"
+        resizeMode="contain"
+        w={24}
+        h={24}
         rounded="full"
         borderColor="blue.500"
         borderWidth={3}
-        backgroundColor="gray.500"
-        w={20}
-        h={20}
-        alignItems="center"
-        justifyContent="center"
         {...rest}
-      >
-        <AntDesign name="user" size={iconSize * 2.6} color="gray" />
-        {showEditIcon && (
-          <Box
-            rounded="full"
-            backgroundColor="blue.500"
-            w={10}
-            h={10}
-            alignItems="center"
-            justifyContent="center"
-            position="absolute"
-            bottom={-8}
-            right={-14}
-          >
-            <Feather name="edit-3" size={18} color="white" />
-          </Box>
-        )}
-      </Box>
+      />
+
+      {showEditIcon && (
+        <Box
+          rounded="full"
+          backgroundColor="blue.500"
+          w={10}
+          h={10}
+          alignItems="center"
+          justifyContent="center"
+          position="absolute"
+          bottom={6}
+          right={-10}
+        >
+          <PencilSimpleLine size={16} color="white" />
+        </Box>
+      )}
     </Box>
   );
 };
