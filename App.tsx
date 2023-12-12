@@ -8,8 +8,10 @@ import {
 } from "@expo-google-fonts/karla";
 
 import { THEME } from "./src/theme";
-import Loading from "@components/Loading";
+
 import { Routes } from "@routes/index";
+
+import Loading from "@components/Loading";
 
 export default function App() {
   const [fontsLoaded] = useFonts({

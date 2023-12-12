@@ -1,25 +1,27 @@
+import { Platform } from "react-native";
+
+import { useTheme } from "native-base";
 import {
   createBottomTabNavigator,
   BottomTabNavigationProp,
 } from "@react-navigation/bottom-tabs";
-import AdDetails from "@screens/AdDetails";
-import AdNew from "@screens/AdNew";
-import AdNewPreview from "@screens/AdNewPreview";
-import Catalog from "@screens/Catalog";
-import Home from "@screens/Home";
-import ItemDetails from "@screens/ItemDetails";
-import MyAds from "@screens/MyAds";
-import { useTheme } from "native-base";
-import sizes from "native-base/lib/typescript/theme/base/sizes";
+
 import { House, SignOut, Tag } from "phosphor-react-native";
-import { Platform } from "react-native";
+
+import Home from "@screens/Home";
+import AdNew from "@screens/AdNew";
+import MyAds from "@screens/MyAds";
+import SignIn from "@screens/SignIn";
+import AdDetails from "@screens/AdDetails";
+import ItemDetails from "@screens/ItemDetails";
+import AdNewPreview from "@screens/AdNewPreview";
 
 type AppRoutes = {
   home: undefined;
   adNew: undefined;
   adNewPreview: undefined;
   itemDetails: undefined;
-  catalog: undefined;
+  signIn: undefined;
 
   myAds: {
     userId: string;
@@ -44,14 +46,14 @@ export const AppRoutes = () => {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarActiveTintColor: "gray.200",
-        tabBarInactiveTintColor: "gray.500",
+        tabBarActiveTintColor: colors.gray[200],
+        tabBarInactiveTintColor: colors.gray[400],
         tabBarStyle: {
           backgroundColor: "white",
           borderTopWidth: 0,
           height: Platform.OS === "android" ? "auto" : 96,
-          paddingBottom: sizes[10],
-          paddingTop: sizes[6],
+          paddingBottom: sizes[8],
+          paddingTop: sizes[7],
         },
       }}
     >
@@ -59,7 +61,9 @@ export const AppRoutes = () => {
         name="home"
         component={Home}
         options={{
-          tabBarIcon: ({ color }) => <House color={color} size={iconSize} />,
+          tabBarIcon: ({ color }) => (
+            <House color={color} size={iconSize} weight="bold" />
+          ),
         }}
       />
       <Screen
@@ -69,6 +73,15 @@ export const AppRoutes = () => {
           tabBarIcon: ({ color }) => <Tag color={color} size={iconSize} />,
         }}
       />
+
+      <Screen
+        name="signIn"
+        component={SignIn}
+        options={{
+          tabBarIcon: () => <SignOut color={colors.red[300]} size={iconSize} />,
+        }}
+      />
+
       <Screen
         name="adNewPreview"
         component={AdNewPreview}
@@ -79,13 +92,6 @@ export const AppRoutes = () => {
       <Screen
         name="itemDetails"
         component={ItemDetails}
-        options={{
-          tabBarButton: () => null,
-        }}
-      />
-      <Screen
-        name="catalog"
-        component={Catalog}
         options={{
           tabBarButton: () => null,
         }}

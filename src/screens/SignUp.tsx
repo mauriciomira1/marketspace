@@ -2,9 +2,17 @@ import Logotipo from "@assets/logo.svg";
 import Button from "@components/Button";
 import Input from "@components/Input";
 import UserPhoto from "@components/UserPhoto";
+import { useNavigation } from "@react-navigation/native";
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 import { VStack, Text, ScrollView } from "native-base";
 
 const SignUp = () => {
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  const handleGoToSignIn = () => {
+    navigation.navigate("signIn");
+  };
+
   return (
     <ScrollView bgColor="gray.600">
       <VStack flex={1} p={8} alignItems="center">
@@ -32,13 +40,16 @@ const SignUp = () => {
           mt={4}
           w="full"
         />
-        <Text pt={4}>Já tem uma conta?</Text>
+        <Text pt={4} pb={2}>
+          Já tem uma conta?
+        </Text>
         <Button
           title="Ir para login"
           bgColor="gray.500"
           titleColor="gray.200"
           bgOnPress="gray.400"
           w="full"
+          onPress={handleGoToSignIn}
         />
       </VStack>
     </ScrollView>

@@ -4,10 +4,10 @@ import { Box, useTheme } from "native-base";
 
 import { useAuth } from "@hooks/useAuth";
 
-import { AppRoutes } from "./app.routes";
 import { AuthRoutes } from "./auth.routes";
 
 import Loading from "@components/Loading";
+import { AppRoutes } from "./app.routes";
 
 export const Routes = () => {
   const { colors } = useTheme();
@@ -23,7 +23,7 @@ export const Routes = () => {
   return (
     <Box flex={1} bg="gray.600">
       <NavigationContainer>
-        {user.id ? <AppRoutes /> : <AuthRoutes />}
+        {!user ? <AppRoutes /> : <AuthRoutes />}
       </NavigationContainer>
     </Box>
   );
