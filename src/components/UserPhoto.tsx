@@ -1,6 +1,5 @@
 import { Box, IImageProps, Image } from "native-base";
 import { PencilSimpleLine } from "phosphor-react-native";
-import Tenis from "@assets/tenis-vermelho.jpg";
 import DefaultAvatar from "@assets/user-avatar.png";
 
 type Props = IImageProps & {

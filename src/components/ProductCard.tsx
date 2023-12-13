@@ -1,9 +1,8 @@
 import { Badge, Box, HStack, Image, Tag, Text, VStack } from "native-base";
-import ProductPhoto from "@assets/tenis-vermelho.jpg";
+import ProductPhoto from "@assets/productsImages/tenis-vermelho-5564/tenis-vermelho.jpg";
 import UserPhoto from "./UserPhoto";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
 
 type Props = {
@@ -12,10 +11,13 @@ type Props = {
 };
 
 const ProductCard = ({ tag = "usado", userPhotoSrc }: Props) => {
-  /*   const navigation = useNavigation<AppNavigatorRoutesProps>();
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
 
-  const handleGoToProductPage = navigation.navigate("itemDetails"); */
-  const handleGoToProductPage = () => {};
+  const handleGoToProductPage = () => {
+    console.log("clicou");
+    navigation.navigate("itemDetails");
+  };
+
   return (
     <VStack>
       <UserPhoto
