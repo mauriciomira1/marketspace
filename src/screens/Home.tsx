@@ -30,11 +30,15 @@ const Home = () => {
 
   const { isOpen, onOpen, onClose } = useDisclose();
 
+  const handleOnCloseByButtonClose = () => {
+    return onClose();
+  };
+
   return (
     <ScrollView>
       <Actionsheet onClose={onClose} isOpen={isOpen}>
         <Actionsheet.Content>
-          <FilterTab />
+          <FilterTab closeByButton={handleOnCloseByButtonClose} />
         </Actionsheet.Content>
       </Actionsheet>
 

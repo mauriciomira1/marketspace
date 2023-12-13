@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import {
   Badge,
-  Button,
   Checkbox,
   HStack,
+  Button as NativeBaseButton,
   Pressable,
   Switch,
   Text,
@@ -12,15 +12,22 @@ import {
 } from "native-base";
 
 import { X } from "phosphor-react-native";
+import Button from "./Button";
+import CheckboxFilterTab from "./CheckboxFilterTab";
+import { ProductDTO } from "@dtos/ProductDTO";
 
-type PaymentMethodsProps =
+export type PaymentMethodsProps =
   | "boleto"
   | "pix"
   | "dinheiro"
   | "credito"
   | "deposito";
 
-const FilterTab = () => {
+type Props = {
+  closeByButton: () => void;
+};
+
+const FilterTab = ({ closeByButton }: Props) => {
   const [isNewActive, setIsNewActive] = useState(false);
   const [isUsableActive, setIsUsableActive] = useState(false);
   const [AcceptExchange, setAcceptExchange] = useState(false);
@@ -28,24 +35,39 @@ const FilterTab = () => {
     []
   );
 
+  const handleCheckboxChange = (
+    method: PaymentMethodsProps,
+    isChecked: boolean
+  ) => {
+    setPaymentsMethods((prev) => {
+      if (isChecked) {
+        return [...prev, method];
+      } else {
+        return prev.filter((prevItens) => prevItens !== method);
+      }
+    });
+  };
+
   return (
     <VStack w="full" px={4}>
-      <HStack justifyContent="space-between">
-        <Text fontFamily="heading" fontSize="md">
+      <HStack justifyContent="space-between" alignItems="center">
+        <Text fontFamily="heading" fontSize="lg" pt={2}>
           Filtrar anúncios
         </Text>
         <Pressable
+          opacity={80}
           _pressed={{
-            opacity: 50,
+            opacity: 40,
           }}
+          onPress={closeByButton}
         >
-          <X color="gray.500" />
+          <X color="gray" size={24} />
         </Pressable>
       </HStack>
 
       <Text
         fontFamily="body"
-        fontSize="xs"
+        fontSize="sm"
         fontWeight="bold"
         color="gray.200"
         pb={2}
@@ -55,7 +77,7 @@ const FilterTab = () => {
       </Text>
 
       <HStack space={3}>
-        <Button
+        <NativeBaseButton
           variant="unstyled"
           onPress={() => setIsNewActive(!isNewActive)}
           p={0}
@@ -95,9 +117,9 @@ const FilterTab = () => {
               )}
             </HStack>
           </Badge>
-        </Button>
+        </NativeBaseButton>
 
-        <Button
+        <NativeBaseButton
           variant="unstyled"
           onPress={() => setIsUsableActive(!isUsableActive)}
           p={0}
@@ -137,15 +159,15 @@ const FilterTab = () => {
               )}
             </HStack>
           </Badge>
-        </Button>
+        </NativeBaseButton>
       </HStack>
 
       <Text
         fontFamily="body"
-        fontSize="xs"
+        fontSize="sm"
         fontWeight="bold"
         color="gray.200"
-        pt={4}
+        pt={6}
       >
         Aceita troca?
       </Text>
@@ -166,78 +188,64 @@ const FilterTab = () => {
 
       <Text
         fontFamily="body"
-        fontSize="xs"
+        fontSize="sm"
         fontWeight="bold"
         color="gray.200"
         pt={4}
+        mb={3}
       >
         Meios de pagamento aceitos
       </Text>
 
       <HStack alignItems="center">
         <Checkbox.Group>
-          <Checkbox
+          <CheckboxFilterTab
+            title="Boleto"
             value="boleto"
-            _checked={{
-              bgColor: "blue.500",
-              borderColor: "blue.500",
-            }}
-            defaultIsChecked
-          >
-            Boleto
-          </Checkbox>
+            handleCheckboxChange={handleCheckboxChange}
+          />
 
-          <Checkbox
+          <CheckboxFilterTab
+            title="Pix"
             value="pix"
-            _checked={{
-              bgColor: "blue.500",
-              borderColor: "blue.500",
-            }}
-            defaultIsChecked
-          >
-            Pix
-          </Checkbox>
+            handleCheckboxChange={handleCheckboxChange}
+          />
 
-          <Checkbox
+          <CheckboxFilterTab
+            title="Dinheiro"
             value="dinheiro"
-            _checked={{
-              bgColor: "blue.500",
-              borderColor: "blue.500",
-            }}
-            defaultIsChecked
-          >
-            Dinheiro
-          </Checkbox>
+            handleCheckboxChange={handleCheckboxChange}
+          />
 
-          <Checkbox
+          <CheckboxFilterTab
+            title="Crédito"
             value="credito"
-            _checked={{
-              bgColor: "blue.500",
-              borderColor: "blue.500",
-            }}
-            defaultIsChecked
-          >
-            Crédito
-          </Checkbox>
+            handleCheckboxChange={handleCheckboxChange}
+          />
 
-          <Checkbox
+          <CheckboxFilterTab
+            title="Depósito"
             value="deposito"
-            _checked={{
-              bgColor: "blue.500",
-              borderColor: "blue.500",
-            }}
-            defaultIsChecked
-          >
-            Depósito
-          </Checkbox>
+            handleCheckboxChange={handleCheckboxChange}
+          />
         </Checkbox.Group>
       </HStack>
 
-      {/*   | "boleto"
-  | "pix"
-  | "dinheiro"
-  | "credito"
-  | "deposito"; */}
+      <HStack w="full" space={3} pb={8} mt={12}>
+        <Button
+          title="Resetar filtros"
+          bgColor="gray.500"
+          bgOnPress="gray.400"
+          flex={1}
+        />
+        <Button
+          title="Aplicar filtros"
+          titleColor="white"
+          bgColor="gray.100"
+          bgOnPress="gray.300"
+          flex={1}
+        />
+      </HStack>
     </VStack>
   );
 };

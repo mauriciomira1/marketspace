@@ -1,6 +1,10 @@
 import { Badge, Box, HStack, Image, Tag, Text, VStack } from "native-base";
 import ProductPhoto from "@assets/tenis-vermelho.jpg";
 import UserPhoto from "./UserPhoto";
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
 
 type Props = {
   tag: "usado" | "novo";
@@ -8,6 +12,10 @@ type Props = {
 };
 
 const ProductCard = ({ tag = "usado", userPhotoSrc }: Props) => {
+  /*   const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+  const handleGoToProductPage = navigation.navigate("itemDetails"); */
+  const handleGoToProductPage = () => {};
   return (
     <VStack>
       <UserPhoto
@@ -41,16 +49,18 @@ const ProductCard = ({ tag = "usado", userPhotoSrc }: Props) => {
         </Text>
       </Badge>
 
-      <Box w={40} h={24} rounded="md" bgColor="red.300">
-        <Image
-          source={ProductPhoto}
-          defaultSource={ProductPhoto}
-          resizeMode="cover"
-          alt="Tênis vermelho"
-          flex={1}
-          rounded="md"
-        />
-      </Box>
+      <TouchableOpacity onPress={handleGoToProductPage}>
+        <Box w={40} h={24} rounded="md" bgColor="red.300">
+          <Image
+            source={ProductPhoto}
+            defaultSource={ProductPhoto}
+            resizeMode="cover"
+            alt="Tênis vermelho"
+            flex={1}
+            rounded="md"
+          />
+        </Box>
+      </TouchableOpacity>
       <Text fontFamily="body" fontSize="sm" mb={-1}>
         Tênis vermelho
       </Text>

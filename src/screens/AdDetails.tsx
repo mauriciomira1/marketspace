@@ -1,10 +1,13 @@
-import { Text } from "native-base";
+import { HStack, VStack } from "native-base";
+import { ArrowLeft } from "phosphor-react-native";
 
 const AdDetails = () => {
   return (
-    <Text flex={1} alignItems="center" justifyContent="center">
-      AdDetails page
-    </Text>
+    <VStack>
+      <HStack>
+        <ArrowLeft color="black" />
+      </HStack>
+    </VStack>
   );
 };
 
