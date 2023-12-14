@@ -1,20 +1,24 @@
-import { Box, View } from "native-base";
-import { Image } from "react-native";
+import { Image, ImageSourcePropType } from "react-native";
 import PagerView from "react-native-pager-view";
 
 type Props = {
-  photosUrl: Image[];
+  photosUrl: ImageSourcePropType[];
 };
 
 const PhotosCarousel = ({ photosUrl }: Props) => {
   return (
-    <Box>
-      <PagerView>
-        {photosUrl.map((photo) => (
-          <View key={1}>{photo}</View>
-        ))}
-      </PagerView>
-    </Box>
+    <PagerView>
+      {photosUrl.map((photo) => (
+        <Image
+          source={photo}
+          width={36}
+          height={36}
+          key={photo.valueOf.name}
+          alt="Foto do produto"
+          resizeMode="cover"
+        />
+      ))}
+    </PagerView>
   );
 };
 

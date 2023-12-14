@@ -9,7 +9,7 @@ type Props = IImageProps & {
 
 const UserPhoto = ({ showEditIcon, UserAvatar, ...rest }: Props) => {
   return (
-    <Box alignItems="center" pb={6}>
+    <Box alignItems="center">
       <Image
         source={UserAvatar ? UserAvatar : DefaultAvatar}
         defaultSource={UserAvatar ? UserAvatar : DefaultAvatar}

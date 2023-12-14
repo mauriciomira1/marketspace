@@ -43,7 +43,7 @@ const Home = () => {
       </Actionsheet>
 
       <VStack py={10} px={6} flex={1} bgColor="gray.600">
-        <HStack justifyContent="space-between">
+        <HStack justifyContent="space-between" pb={8}>
           <HStack>
             <UserPhoto w={12} h={12} />
             <VStack pl={2}>
