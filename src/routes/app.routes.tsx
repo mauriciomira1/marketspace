@@ -68,10 +68,20 @@ export const AppRoutes = () => {
         }}
       />
       <Screen
+        name="myAds"
+        component={MyAds}
+        options={{
+          tabBarIcon: ({ color }) => <Tag color={color} size={iconSize} />,
+        }}
+      />
+      <Screen
         name="adNew"
         component={AdNew}
         options={{
-          tabBarIcon: ({ color }) => <Tag color={color} size={iconSize} />,
+          tabBarButton: () => null,
+          tabBarStyle: {
+            display: "none",
+          },
         }}
       />
 
@@ -100,13 +110,7 @@ export const AppRoutes = () => {
           },
         }}
       />
-      <Screen
-        name="myAds"
-        component={MyAds}
-        options={{
-          tabBarButton: () => null,
-        }}
-      />
+
       <Screen
         name="adDetails"
         component={AdDetails}

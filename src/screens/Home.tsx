@@ -43,6 +43,10 @@ const Home = () => {
     navigation.navigate("myAds");
   };
 
+  const goToNewAdPage = () => {
+    navigation.navigate("adNew");
+  };
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Actionsheet onClose={onClose} isOpen={isOpen}>
@@ -71,6 +75,7 @@ const Home = () => {
             bgColor="gray.100"
             bgOnPress="gray.200"
             icon={<Plus size={18} color="white" />}
+            onPress={goToNewAdPage}
           />
         </HStack>
 

@@ -1,18 +1,16 @@
-import {
-  Box,
-  CheckIcon,
-  HStack,
-  ScrollView,
-  Select,
-  Text,
-  VStack,
-} from "native-base";
+import { useState } from "react";
+
+import { Box, HStack, ScrollView, Select, Text, VStack } from "native-base";
 
 import { Plus } from "phosphor-react-native";
 
 import ProductOnSellCard from "@components/ProductOnSellCard";
 
+type IsActivesProps = "all" | "actives" | "inactives";
+
 const MyAds = () => {
+  const [isActives, setIsActives] = useState<IsActivesProps>("all");
+
   return (
     <VStack pt={12} px={6} flex={1} bgColor="gray.600">
       <HStack alignItems="center" space={16} justifyContent="flex-end">
@@ -26,7 +24,7 @@ const MyAds = () => {
           9 anúncios
         </Text>
         <Select
-          selectedValue="all"
+          selectedValue={isActives}
           minWidth={120}
           accessibilityLabel="Filtre os anúncios"
           size={10}
