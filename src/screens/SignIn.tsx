@@ -16,7 +16,7 @@ const SignIn = () => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <VStack flex={1} alignItems="center" justifyContent="center">
         <VStack
           bgColor="gray.600"

@@ -23,9 +23,10 @@ type AppRoutes = {
   itemDetails: undefined;
   signIn: undefined;
 
-  myAds: {
+  myAds: undefined;
+  /*   myAds: {
     userId: string;
-  };
+  }; */
 
   adDetails: {
     productId: string;
@@ -94,6 +95,9 @@ export const AppRoutes = () => {
         component={ItemDetails}
         options={{
           tabBarButton: () => null,
+          tabBarStyle: {
+            display: "none",
+          },
         }}
       />
       <Screen

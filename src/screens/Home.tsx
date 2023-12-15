@@ -24,18 +24,27 @@ import {
 import Button from "@components/Button";
 import ProductCard from "@components/ProductCard";
 import FilterTab from "@components/FilterTab";
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
 
 const Home = () => {
   const { colors } = useTheme();
 
   const { isOpen, onOpen, onClose } = useDisclose();
 
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+
   const handleOnCloseByButtonClose = () => {
     return onClose();
   };
 
+  const goToMyAds = () => {
+    navigation.navigate("myAds");
+  };
+
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <Actionsheet onClose={onClose} isOpen={isOpen}>
         <Actionsheet.Content>
           <FilterTab closeByButton={handleOnCloseByButtonClose} />
@@ -92,12 +101,14 @@ const Home = () => {
             </VStack>
           </HStack>
 
-          <HStack alignItems="center" space={2}>
-            <Text fontFamily="body" fontWeight="bold" color="blue.500">
-              Meus anúncios
-            </Text>
-            <ArrowRight size={18} color={colors.blue[500]} />
-          </HStack>
+          <TouchableOpacity onPress={goToMyAds}>
+            <HStack alignItems="center" space={2}>
+              <Text fontFamily="body" fontWeight="bold" color="blue.500">
+                Meus anúncios
+              </Text>
+              <ArrowRight size={18} color={colors.blue[500]} />
+            </HStack>
+          </TouchableOpacity>
         </HStack>
 
         <Text fontFamily="body" fontSize="sm" fontWeight="light" mb={3} mt={5}>
@@ -111,6 +122,7 @@ const Home = () => {
           alignItems="center"
           justifyContent="space-between"
           w="full"
+          mb={6}
         >
           <Input
             borderWidth={0}

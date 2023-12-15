@@ -1,9 +1,7 @@
-import PhotosCarousel from "@components/PhotosCarousel";
-import { Badge, Box, HStack, ScrollView, Text, VStack } from "native-base";
-import photo01 from "@assets/productsImages/tenis-vermelho-5564/tenis-vermelho.jpg";
-import photo02 from "@assets/productsImages/tenis-vermelho-5564/1.jpg";
-import photo03 from "@assets/productsImages/tenis-vermelho-5564/2.jpg";
-import photo04 from "@assets/productsImages/tenis-vermelho-5564/3.jpg";
+import { TouchableOpacity } from "react-native";
+
+import { Badge, HStack, ScrollView, Text, VStack } from "native-base";
+
 import {
   ArrowLeft,
   Bank,
@@ -11,13 +9,24 @@ import {
   CreditCard,
   Money,
   QrCode,
+  WhatsappLogo,
 } from "phosphor-react-native";
-import { TouchableOpacity } from "react-native";
+
 import { useNavigation } from "@react-navigation/native";
+
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
-import UserPhoto from "@components/UserPhoto";
+
 import { UserDTO } from "@dtos/UserDTO";
 import { ProductDTO } from "@dtos/ProductDTO";
+
+import Button from "@components/Button";
+import UserPhoto from "@components/UserPhoto";
+import PhotosCarousel from "@components/PhotosCarousel";
+
+import photo01 from "@assets/productsImages/tenis-vermelho-5564/tenis-vermelho.jpg";
+import photo02 from "@assets/productsImages/tenis-vermelho-5564/1.jpg";
+import photo03 from "@assets/productsImages/tenis-vermelho-5564/2.jpg";
+import photo04 from "@assets/productsImages/tenis-vermelho-5564/3.jpg";
 
 const ItemDetails = () => {
   const photosUrl = [photo01];
@@ -153,7 +162,40 @@ const ItemDetails = () => {
           })}
         </VStack>
       </ScrollView>
-      <Box bgColor="white"></Box>
+      <HStack
+        py={6}
+        bgColor="white"
+        w="full"
+        px={5}
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <HStack alignItems="baseline" space={1}>
+          <Text
+            fontFamily="body"
+            fontSize="md"
+            fontWeight="semibold"
+            color="blue.600"
+          >
+            R$
+          </Text>
+          <Text
+            fontFamily="body"
+            fontSize="xl"
+            fontWeight="bold"
+            color="blue.600"
+          >
+            {productData.price}
+          </Text>
+        </HStack>
+        <Button
+          title="Entrar em contato"
+          bgColor="blue.500"
+          bgOnPress="blue.600"
+          titleColor="white"
+          icon={<WhatsappLogo weight="fill" color="white" size="16" />}
+        />
+      </HStack>
     </>
   );
 };

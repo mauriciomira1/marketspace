@@ -14,7 +14,7 @@ const SignUp = () => {
   };
 
   return (
-    <ScrollView bgColor="gray.600">
+    <ScrollView bgColor="gray.600" showsVerticalScrollIndicator={false}>
       <VStack flex={1} p={8} alignItems="center">
         <VStack alignItems="center" pb={4}>
           <Logotipo width={72} />
