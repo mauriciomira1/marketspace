@@ -1,6 +1,6 @@
 import { TouchableOpacity } from "react-native";
 
-import { Badge, HStack, ScrollView, Text, VStack } from "native-base";
+import { Badge, Box, HStack, ScrollView, Text, VStack } from "native-base";
 
 import {
   ArrowLeft,
@@ -65,7 +65,9 @@ const ItemDetails = () => {
             <ArrowLeft color="black" />
           </TouchableOpacity>
 
-          <PhotosCarousel photosUrl={photosUrl} />
+          <Box overflow="hidden" h={56} w="full">
+            <PhotosCarousel photosUrl={photosUrl} />
+          </Box>
 
           <HStack space={2} alignItems="center">
             <UserPhoto w={8} h={8} bgColor="amber.200" />

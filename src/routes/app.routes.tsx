@@ -28,9 +28,10 @@ type AppRoutes = {
     userId: string;
   }; */
 
-  adDetails: {
+  adDetails: undefined;
+  /*   adDetails: {
     productId: string;
-  };
+  }; */
 };
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;

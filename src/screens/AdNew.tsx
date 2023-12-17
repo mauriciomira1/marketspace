@@ -65,6 +65,10 @@ const AdNew = () => {
     navigation.goBack();
   };
 
+  const goToAdDetails = () => {
+    navigation.navigate("adDetails");
+  };
+
   return (
     <>
       <ScrollView>
@@ -261,6 +265,7 @@ const AdNew = () => {
           bgOnPress="gray.200"
           titleColor="white"
           flex={1}
+          onPress={goToAdDetails}
         />
       </HStack>
     </>
